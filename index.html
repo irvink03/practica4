@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Práctica 4 - HTML5</title>
+    <!-- Estilos CSS integrados para diseño tipo App Web -->
+    <style>
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; padding: 0; background-color: #0b1c3d; color: #ffffff; line-height: 1.6;
+        }
+        header { 
+            height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            background: linear-gradient(135deg, #0f2b5a, #0b1c3d); text-align: center;
+        }
+        header h1 { font-size: 3em; margin-bottom: 40px; text-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
+        nav { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+        nav a { 
+            text-decoration: none; color: #0b1c3d; background-color: #ffffff; font-weight: bold; 
+            font-size: 1.3em; padding: 20px 40px; border-radius: 50px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        nav a:hover { transform: scale(1.1); background-color: #f1c40f; }
+        section, article, aside {
+            min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+            align-items: center; padding: 50px 20px; box-sizing: border-box; border-bottom: 2px solid #1a3668;
+        }
+        h2 { font-size: 2.5em; color: #f1c40f; margin-bottom: 30px; text-align: center; }
+        .multimedia-container { display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap; }
+        figure { 
+            padding: 20px; background-color: rgba(255, 255, 255, 0.1); border: 1px solid #1a3668; 
+            border-radius: 15px; text-align: center;
+        }
+        figure h3 { margin-top: 0; color: #ffffff; }
+        figcaption { margin-top: 15px; font-weight: bold; color: #cfcfcf; }
+        audio { width: 380px; }
+        video { width: 480px; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px; }
+        form {
+            background-color: rgba(255,255,255,0.05); padding: 30px; border-radius: 15px;
+            width: 100%; max-width: 500px; border: 1px solid #1a3668;
+        }
+        form label { display: block; margin-bottom: 15px; font-weight: bold; }
+        input { margin-top: 5px; margin-left: 0; padding: 8px; width: 95%; border-radius: 5px; border: none; }
+        input[type="color"], input[type="range"] { padding: 0; width: 100%; }
+        button[type="submit"] {
+            width: 100%; padding: 15px; margin-top: 20px; background-color: #27ae60; color: white; 
+            border: none; border-radius: 5px; font-size: 1.1em; font-weight: bold; cursor: pointer;
+        }
+        button[type="submit"]:hover { background-color: #2ecc71; }
+        canvas { background-color: #ffffff; border-radius: 10px; display: block; margin: 20px auto; }
+        mark { background-color: #f1c40f; padding: 0 5px; border-radius: 3px; color: #0b1c3d; }
+        details { background-color: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; cursor: pointer; }
+        summary { font-weight: bold; font-size: 1.2em; color: #f1c40f; }
+        .btn-volver {
+            display: inline-block; margin-top: 50px; padding: 12px 30px; background-color: #e74c3c;
+            color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 25px;
+            font-size: 1.1em; transition: background-color 0.3s;
+        }
+        .btn-volver:hover { background-color: #c0392b; }
+        footer { text-align: center; padding: 20px; background-color: #061025; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <!-- Encabezado principal y navegación interna -->
+    <header id="inicio">
+        <h1>Portal de Desarrollo Web HTML5</h1>
+        <nav>
+            <a href="#multimedia">Multimedia</a>
+            <a href="#formulario">Formulario Avanzado</a>
+            <a href="#canvas">Canvas Web</a>
+            <a href="#info">Información</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Sección de elementos multimedia nativos -->
+        <section id="multimedia">
+            <h2>Multimedia (Audio y Video)</h2>
+            <div class="multimedia-container">
+                <figure>
+                    <h3>Audio</h3>
+                    <audio controls>
+                        <!-- Rutas corregidas sin espacios -->
+                        <source src="audio/remmy.mp3" type="audio/mpeg">
+                        <source src="audio/fallback.ogg" type="audio/ogg"> <!-- Fuente múltiple requerida -->
+                        Tu navegador no soporta el elemento de audio.
+                    </audio>
+                    <figcaption>Remmy Valenzuela - Se Murió de Amor</figcaption>
+                </figure>
+                <figure>
+                    <h3>Video</h3>
+                    <!-- Rutas corregidas sin espacios -->
+                    <video controls poster="img/joan.jpg">
+                        <source src="video/joan.mp4" type="video/mp4">
+                        <source src="video/fallback.webm" type="video/webm"> <!-- Fuente múltiple requerida -->
+                        Tu navegador no soporta el elemento de video.
+                    </video>
+                    <figcaption>Joan Sebastian - Vestido de Besos</figcaption>
+                </figure>
+            </div>
+            <a href="#inicio" class="btn-volver">⬆ Volver al Menú Principal</a>
+        </section>
+
+        <!-- Sección de formulario con validaciones HTML5 -->
+        <section id="formulario">
+            <h2>Formulario de Registro y Preferencias</h2>
+            <form action="#" method="get">
+                <label>Correo Electrónico: <input type="email" placeholder="usuario@unach.mx" required></label>
+                <label>Sitio Web / GitHub: <input type="url" placeholder="https://github.com/tu-usuario"></label>
+                <label>Nivel de Experiencia (1-10): <input type="number" min="1" max="10" step="1" required></label>
+                <label>Sensibilidad (HUD/Controles): <input type="range" min="0" max="100"></label>
+                <label>Fecha de Práctica: <input type="date"></label>
+                <label>Color de Interfaz Preferido: <input type="color" value="#C0392B"></label>
+                <label>Teléfono (Móvil): <input type="tel" placeholder="961-000-0000"></label>
+                <label>Buscar hardware: <input type="search" placeholder="Ej. AMD Ryzen 5..."></label>
+                
+                <label>Juego / Interés Destacado:
+                    <input type="text" list="intereses" placeholder="Elige una opción...">
+                    <datalist id="intereses">
+                        <option value="Arknights: Endfield">
+                        <option value="Call of Duty: Mobile">
+                        <option value="Last Day on Earth: Survival">
+                        <option value="Blox Fruits">
+                        <option value="Clash of Clans">
+                    </datalist>
+                </label>
+                <button type="submit">Enviar Datos</button>
+            </form>
+            <a href="#inicio" class="btn-volver">⬆ Volver al Menú Principal</a>
+        </section>
+
+        <!-- Sección de dibujo vectorial con Canvas -->
+        <section id="canvas">
+            <h2>Gráficos con Canvas</h2>
+            <canvas id="miCanvas" width="500" height="200"></canvas>
+            <a href="#inicio" class="btn-volver">⬆ Volver al Menú Principal</a>
+        </section>
+
+        <!-- Sección de etiquetas adicionales de texto y progreso -->
+        <article id="info">
+            <h2>Información Adicional</h2>
+            
+            <p>Uso de la etiqueta <mark>mark</mark> en la práctica del <time datetime="2026-08-31">31 de agosto de 2026</time>.</p>
+            <p>Progreso de la tarea: <progress value="100" max="100">100%</progress></p>
+            
+            <aside style="margin-top: 30px; width: 100%; max-width: 600px;">
+                <details>
+                    <summary>Haz clic aquí para ver más detalles</summary>
+                    <p style="margin-top: 10px;">Esta es la información oculta utilizando la etiqueta details.</p>
+                </details>
+            </aside>
+
+            <a href="#inicio" class="btn-volver">⬆ Volver al Menú Principal</a>
+        </article>
+    </main>
+
+    <footer>
+        <p>Elaborado por: Irving Ramiro Perez Chavarria - Licenciatura en Sistemas Computacionales - Práctica 4</p>
+    </footer>
+
+    <!-- Script para renderizar las figuras en el Canvas -->
+    <script>
+        const canvas = document.getElementById('miCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        ctx.fillStyle = '#2C3E50';
+        ctx.fillRect(0, 0, 500, 200); // Dibuja rectángulo
+        
+        ctx.beginPath();
+        ctx.arc(250, 80, 50, 0, Math.PI * 2); // Dibuja círculo
+        ctx.fillStyle = '#E74C3C';
+        ctx.fill();
+        ctx.strokeStyle = '#F1C40F';
+        ctx.lineWidth = 6;
+        ctx.stroke();
+
+        ctx.fillStyle = '#ECF0F1';
+        ctx.font = '22px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('Sombrero de Paja - Canvas HTML5', 250, 170); // Inserta texto
+    </script>
+</body>
+</html>
